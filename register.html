@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuário</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Registro de Usuário</h1>
+    <form id="register-form" action="/auth/register" method="post">
+        <label for="firstname">Primeiro Nome:</label>
+        <input type="text" id="firstname" name="firstname" required><br>
+
+        <label for="secondname">Sobrenome:</label>
+        <input type="text" id="secondname" name="secondname" required><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required><br>
+
+        <label for="idrg">RG:</label>
+        <input type="text" id="idrg" name="idrg" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="cellphone">Celular:</label>
+        <input type="text" id="cellphone" name="cellphone" required><br>
+
+        <label for="job">Profissão:</label>
+        <input type="text" id="job" name="job" required><br>
+
+        <label for="maritialstats">Estado Civil:</label>
+        <input type="text" id="maritialstats" name="maritialstats" required><br>
+
+        <label for="adress">Endereço:</label>
+        <input type="text" id="adress" name="adress" required><br>
+
+        <label for="city">Cidade:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="state">Estado:</label>
+        <input type="text" id="state" name="state" required><br>
+
+        <label for="postalcode">CEP:</label>
+        <input type="text" id="postalcode" name="postalcode" required><br>
+
+        <label for="country">País:</label>
+        <input type="text" id="country" name="country" required><br>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="confirmpassword">Confirme a senha:</label>
+        <input type="password" id="confirmpassword" name="confirmpassword" required><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <script>
+        document.getElementById("register-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            // Realize a solicitação AJAX ou deixe o formulário seguir o comportamento padrão
+        });
+    </script>
+</body>
+
+</html>
