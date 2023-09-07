@@ -1,60 +1,18 @@
+// Importação de módulos e configurações iniciais
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
 const app = express();
-
 app.use(express.static("public"));
 
-// models
+// Importação de modelos e classes
 const User = require("./models/User");
+const Register = require("./register");
+const register = new Register();
+app.use("/auth", register.router);
 
-// Config JSON response
-app.use(express.json());
-
-app.use(
-  express.static("public", {
-    setHeaders: (res, path, stat) => {
-      res.set("Content-Type", "text/css");
-    },
-  })
-);
-
-// Private Route
-app.get("/user/:id", checkToken, async (req, res) => {
-  const id = req.params.id;
-
-  // check if user exists
-  const user = await User.findById(id, "-password");
-
-  if (!user) {
-    return res.status(404).json({ msg: "Usuário não encontrado!" });
-  }
-
-  res.status(200).json({ user });
-});
-
-function checkToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
-  if (!token) return res.status(401).json({ msg: "Acesso negado!" });
-
-  try {
-    const secret = process.env.SECRET;
-
-    jwt.verify(token, secret);
-
-    next();
-  } catch (err) {
-    res.status(400).json({ msg: "O Token é inválido!" });
-  }
-}
-
-//Database
-
+// Configuração do servidor e banco de dados
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;
 
@@ -68,15 +26,35 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-//================================================================================================================================
+// Middleware para verificação de token
+function checkToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
 
-// Open Route
+  if (!token) return res.status(401).json({ msg: "Acesso negado!" });
+
+  try {
+    const secret = process.env.SECRET;
+    jwt.verify(token, secret);
+    next();
+  } catch (err) {
+    res.status(400).json({ msg: "O Token é inválido!" });
+  }
+}
+
+// Rotas públicas
 app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/register.html");
 });
 
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/login.html");
+});
+
+// Registro de usuário
 app.post("/auth/register", async (req, res) => {
   try {
+    // Extrair dados do corpo da requisição
     const {
       firstname,
       secondname,
@@ -95,7 +73,7 @@ app.post("/auth/register", async (req, res) => {
       confirmpassword,
     } = req.body;
 
-    // Validações (mantive as validações existentes)
+    // Validações (manter as validações existentes)
 
     // Verificar se o usuário já existe no banco de dados
     const userExists = await User.findOne({ email: email });
@@ -105,10 +83,6 @@ app.post("/auth/register", async (req, res) => {
     }
 
     // Criar um novo usuário no banco de dados
-
-    //const salt = await bcrypt.genSalt(12);
-    //const passwordHash = await bcrypt.hash(password, salt);
-
     const newUser = new User({
       firstname,
       secondname,
@@ -131,7 +105,6 @@ app.post("/auth/register", async (req, res) => {
 
     res.status(201).json({ msg: "Usuário registrado com sucesso!" });
   } catch (error) {
-    // Em caso de erro, envie uma resposta de erro
     console.error(error);
     res.status(500).json({
       msg: "Erro ao criar o usuário no banco de dados.",
@@ -140,15 +113,8 @@ app.post("/auth/register", async (req, res) => {
   }
 });
 
-//================================================================================================================================
-
-
-app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
-});
-
+// Autenticação de usuário
 app.post("/auth/login", async (req, res) => {
-  
   try {
     const { email, password } = req.body;
 
@@ -168,10 +134,7 @@ app.post("/auth/login", async (req, res) => {
       return res.status(404).json({ msg: "Usuário não encontrado!" });
     }
 
-    // Verificar se a senha está correta
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordValid) {
+    if (password !== user.password) {
       return res.status(422).json({ msg: "Senha inválida" });
     }
 
@@ -185,4 +148,18 @@ app.post("/auth/login", async (req, res) => {
     console.error(error);
     res.status(500).json({ msg: "Erro ao processar a autenticação", error: error.message });
   }
+});
+
+// Rota privada
+app.get("/user/:id", checkToken, async (req, res) => {
+  const id = req.params.id;
+
+  // Verificar se o usuário existe
+  const user = await User.findById(id, "-password");
+
+  if (!user) {
+    return res.status(404).json({ msg: "Usuário não encontrado!" });
+  }
+
+  res.status(200).json({ user });
 });

@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
   state: String,
   postalcode: String,
   country: String,
+  password: String,
 });
 
 const User = mongoose.model("User", userSchema);
