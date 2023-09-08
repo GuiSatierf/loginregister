@@ -53,8 +53,8 @@ body {
   font-weight: 600;
 }
 
-.loginMid #password,
-#email {
+.loginMid .passwordForm,
+.emailForm {
   border-radius: 10px;
   border: 1px solid #000;
   font-size: 14px;
@@ -440,4 +440,39 @@ button:active {
   font-size: 10px;
   margin-bottom: 2px;
   font-weight: 600;
+}
+
+/*================CREATE ACCOUNT==================*/
+
+.thankContainer {
+  background: linear-gradient(
+    180deg,
+    #ffffff 20%,
+    #f4c3c9 20%,
+    40%,
+    #0241ce 40%,
+    60%,
+    #3bffab 60%,
+    80%,
+    #ff5a2a 80%
+  );
+}
+
+.thank {
+  background: #fff;
+  padding: 60px;
+  border-radius: 40px;
+}
+
+.thank h1 {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 62px;
+  letter-spacing: .5px;
+}
+
+.thank p {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 15px;
 }

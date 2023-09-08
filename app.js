@@ -13,6 +13,7 @@ const Register = require("./register");
 const register = new Register();
 app.use("/auth", register.router);
 app.use('/public', express.static('public'))
+app.use('/public', express.static('views'))
 
 
 // Configuração do servidor e banco de dados
@@ -50,11 +51,19 @@ app.use(express.urlencoded({extended: true}));
 
 // Rotas públicas
 app.get("/register", (req, res) => {
-  res.sendFile(__dirname + "/register.html");
+  res.sendFile(__dirname + "/views/register.html");
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
+  res.sendFile(__dirname + "/views/login.html");
+});
+
+app.get("/payment", (req, res) => {
+  res.sendFile(__dirname + "/views/payment.html");
+});
+
+app.get("/thank-you", (req, res) => {
+  res.sendFile(__dirname + "/views/thank.html");
 });
 
 // Autenticação de usuário
