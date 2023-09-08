@@ -4,61 +4,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuário</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>Floruit</title>
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/public/image/logo_azul.ico">
+    <!--Fonte Roboto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!--Css do projeto-->
+    <link rel="stylesheet" href="/public/css/login.css">
+
 </head>
 
-<body>
-    <h1>Registro de Usuário</h1>
+<body class="createAccountContainer">
     <form id="register-form" action="/auth/register" method="post">
-        <label for="firstname">Primeiro Nome:</label>
-        <input type="text" id="firstname" name="firstname" required><br>
+        <div class="createAccount">
+            <div class="logo">
+                <img src="/public/image/logo-floruit-tipografia-preta.png" alt="">
+            </div>
+            <div class="tittleRegister">
+                <h3>Welcome to the account creation area.</h3>
+                <p>You need to fill in all the details below to proceed to the next stage.</p>
+            </div>
+            <div class="formTop">
+                <fieldset>
+                    <div class="formTopOne">
+                        <div class="inputBtn">
+                            <label for="firstname">First Name</label>
+                            <input type="text" type="text" id="firstname" required
+                                placeholder="Enter your first full name">
+                        </div>
 
-        <label for="secondname">Sobrenome:</label>
-        <input type="text" id="secondname" name="secondname" required><br>
+                        <div class="inputBtn">
+                            <label for="secondname">Last Name</label>
+                            <input type="text" id="secondname" name="secondname" required
+                                placeholder="Enter your last full name">
+                        </div>
+                    </div>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" required><br>
+                    <div class="formTopTwo">
+                        <div class="inputBtn">
+                            <label for="cpf">CPF</label>
+                            <input type="text" id="cpf" name="cpf" required
+                                placeholder="Enter with your Brazilian Identification Number">
+                        </div>
 
-        <label for="idrg">RG:</label>
-        <input type="text" id="idrg" name="idrg" required><br>
+                        <div class="inputBtn">
+                            <label for="idrg">ID - RG</label>
+                            <input type="text" id="idrg" name="idrg" required
+                                placeholder="Insert your internacional ID - RG for Brazilians">
+                        </div>
+                    </div>
+                </fieldset>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+                <fieldset>
+                    <div class="formTopThree">
+                        <div class="inputBtn">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your main Email">
+                        </div>
 
-        <label for="cellphone">Celular:</label>
-        <input type="text" id="cellphone" name="cellphone" required><br>
+                        <div class="inputBtn">
+                            <label for="cellphone">Cellphone</label>
+                            <input type="text" id="cellphone" name="cellphone" placeholder="Insert your number">
+                        </div>
+                    </div>
 
-        <label for="job">Profissão:</label>
-        <input type="text" id="job" name="job" required><br>
+                    <div class="formTopFour">
+                        <div class="inputBtn">
+                            <label for="job">Job</label>
+                            <input type="text" id="job" name="job" placeholder="What is your Job Title">
+                        </div>
 
-        <label for="maritialstats">Estado Civil:</label>
-        <input type="text" id="maritialstats" name="maritialstats" required><br>
+                        <div class="inputBtn">
+                            <label for="maritialstats">Marital Status</label>
+                            <input type="text" id="maritialstats" name="maritialstats" placeholder="Insert your status">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
 
-        <label for="adress">Endereço:</label>
-        <input type="text" id="adress" name="adress" required><br>
+            <div class="formMid">
+                <fieldset>
+                    <div class="formMidOne">
+                        <div class="inputBtn">
+                            <label for="adress">Address</label>
+                            <input type="text" id="adress" name="adress" placeholder="Street Brazil, Number 06...">
+                        </div>
+                    </div>
 
-        <label for="city">Cidade:</label>
-        <input type="text" id="city" name="city" required><br>
+                    <div class="formMidTwo">
+                        <div class="inputBtn">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" placeholder="Where is your City?">
+                        </div>
 
-        <label for="state">Estado:</label>
-        <input type="text" id="state" name="state" required><br>
+                        <div class="inputBtn">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" placeholder="Insert your State or Province">
+                        </div>
 
-        <label for="postalcode">CEP:</label>
-        <input type="text" id="postalcode" name="postalcode" required><br>
+                        <div class="inputBtn">
+                            <label for="postalcode">Postal Code</label>
+                            <input type="text" id="postalcode" name="postalcode" placeholder="Insert you Postal Code">
+                        </div>
+                    </div>
 
-        <label for="country">País:</label>
-        <input type="text" id="country" name="country" required><br>
+                    <div class="formMidThree">
+                        <div class="inputBtn">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country" placeholder="Insert your Country">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
 
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required><br>
+            <div class="formBot">
+                <div class="formBotOne">
+                    <fieldset>
+                        <div class="inputBtn">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required
+                                placeholder="Insert the Password">
+                            <small>
+                                Your password must not contain: <br><br>
+                                - References to your name, country or <br>
+                                similar, or sequences of simple numbers <br>
+                                (1234... or 1010).
+                            </small>
+                        </div>
 
-        <label for="confirmpassword">Confirme a senha:</label>
-        <input type="password" id="confirmpassword" name="confirmpassword" required><br>
+                        <div class="inputBtn">
+                            <label for="confirmpassword">Confirm Password</label>
+                            <input type="password" id="confirmpassword" name="confirmpassword" required
+                                placeholder="Confirm your Password">
+                            <small>
+                                Your password must contain: <br><br>
+                                - Three Digits. <br>
+                                - Upper case letters. <br>
+                                - Lowercase letters. <br>
+                                - One special character.
+                            </small>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
 
-        <button type="submit">Registrar</button>
+            <button type="submit">Registrar</button>
+
+        </div>
     </form>
+
     <script src="/app.js"></script>
+
 </body>
 
 </html>

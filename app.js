@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const path = require('path');
 const app = express();
 app.use(express.static("public"));
 
@@ -11,6 +12,8 @@ const User = require("./models/User");
 const Register = require("./register");
 const register = new Register();
 app.use("/auth", register.router);
+app.use('/public', express.static('public'))
+
 
 // Configuração do servidor e banco de dados
 const dbUser = process.env.DB_USER;
@@ -42,6 +45,9 @@ function checkToken(req, res, next) {
   }
 }
 
+app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({extended: true})); 
+
 // Rotas públicas
 app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/register.html");
@@ -49,68 +55,6 @@ app.get("/register", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/login.html");
-});
-
-// Registro de usuário
-app.post("/auth/register", async (req, res) => {
-  try {
-    // Extrair dados do corpo da requisição
-    const {
-      firstname,
-      secondname,
-      cpf,
-      idrg,
-      email,
-      cellphone,
-      job,
-      maritialstats,
-      adress,
-      city,
-      state,
-      postalcode,
-      country,
-      password,
-      confirmpassword,
-    } = req.body;
-
-    // Validações (manter as validações existentes)
-
-    // Verificar se o usuário já existe no banco de dados
-    const userExists = await User.findOne({ email: email });
-
-    if (userExists) {
-      return res.status(422).json({ msg: "Por favor, utilize outro e-mail!" });
-    }
-
-    // Criar um novo usuário no banco de dados
-    const newUser = new User({
-      firstname,
-      secondname,
-      cpf,
-      idrg,
-      email,
-      cellphone,
-      job,
-      maritialstats,
-      adress,
-      city,
-      state,
-      postalcode,
-      country,
-      password,
-      confirmpassword,
-    });
-
-    await newUser.save();
-
-    res.status(201).json({ msg: "Usuário registrado com sucesso!" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      msg: "Erro ao criar o usuário no banco de dados.",
-      error: error.message,
-    });
-  }
 });
 
 // Autenticação de usuário
@@ -143,10 +87,12 @@ app.post("/auth/login", async (req, res) => {
     const token = jwt.sign({ id: user._id }, secret);
 
     // Responder com sucesso e enviar o token
-    res.status(200).json({ msg: "Autenticação realizada com sucesso!", token });
+    res.redirect("");
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Erro ao processar a autenticação", error: error.message });
+    res
+      .status(500)
+      .json({ msg: "Erro ao processar a autenticação", error: error.message });
   }
 });
 

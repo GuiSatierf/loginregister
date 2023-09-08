@@ -1,0 +1,443 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(/public/image/castelo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+/*===============LOGIN===================*/
+
+.loginContainer {
+  padding: 40px 80px;
+  border-radius: 15px;
+  background: #fff;
+  width: 520px;
+}
+
+.loginContainer h3 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.loginContainer p {
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+.loginTop {
+  padding-bottom: 30px;
+}
+
+.loginTop p {
+  text-align: center;
+}
+
+.loginMid form {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.loginMid #password,
+#email {
+  border-radius: 10px;
+  border: 1px solid #000;
+  font-size: 14px;
+  padding: 10px;
+  opacity: 0.7;
+  width: 100%;
+}
+
+.loginMid .tools .rememberMe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.loginMid .tools .rememberMe .check {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.loginMid .tools .rememberMe a {
+  color: #000;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.loginMid .tools .rememberMe a:hover {
+  color: #1e359e;
+}
+
+.loginBot button {
+  display: none;
+}
+
+#rememberMe {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid black;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 3px;
+}
+#rememberMe:checked {
+  appearance: auto;
+  clip-path: circle(46% at 50% 50%);
+  background-color: blue;
+}
+
+#login-form button,
+.createAccount button {
+  font-size: 16px;
+  cursor: pointer;
+
+  color: #fff;
+  background: #000;
+  border-radius: 100px;
+  width: 180px;
+  padding: 8px;
+  margin: 0px auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+button:active {
+  box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 0.5em 0.25em var(--glow-color);
+}
+
+@media (max-width: 550px) {
+  .loginMid .tools .rememberMe {
+    flex-direction: column;
+  }
+
+  .loginMid .tools .rememberMe .check {
+    margin: 20px 0;
+  }
+}
+
+/*================CREATE ACCOUNT==================*/
+
+.createAccountContainer {
+  background: linear-gradient(
+    180deg,
+    #ffffff 20%,
+    #f4c3c9 20%,
+    40%,
+    #0241ce 40%,
+    60%,
+    #3bffab 60%,
+    80%,
+    #ff5a2a 80%
+  );
+}
+
+.createAccount {
+  padding: 20px 40px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.createAccount .tittleRegister {
+  text-align: center;
+}
+
+.createAccount .tittleRegister h3 {
+  font-size: 22px;
+}
+
+.createAccount .logo img {
+  width: 20%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.createAccount .submitBtn {
+  background: #000;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  padding: 10px;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.createAccount .inputBtn {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.createAccount fieldset {
+  border: none;
+}
+
+.createAccount .inputBtn input {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 6px;
+  width: 100%;
+}
+
+.createAccount .inputBtn label {
+  font-size: 12px;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.createAccount .inputBtn small {
+  color: #ccc;
+  padding-top: 5px;
+}
+
+/*===============DPS EU LEMBRO===================*/
+
+.formTop,
+.formMid,
+.formBot {
+  padding: 15px;
+}
+
+.formTop {
+  display: flex;
+  flex-direction: row;
+}
+
+.formTop .formTopTwo {
+  display: flex;
+  flex-direction: row;
+}
+
+.formTop .formTopFour {
+  display: flex;
+  flex-direction: row;
+}
+
+.formMid .formMidTwo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.formBot .formBotOne fieldset {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.confirmEmail .loginMid form {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/*=============DPS EU LEMBRO QUAL É=====================*/
+
+.createAccount .borderBox {
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding: 60px 60px 20px 60px;
+  margin: 20px;
+}
+
+.createAccount .tittleEmail {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.createAccount .tittleEmail p {
+  margin-top: 10px;
+}
+
+.createAccount .borderBox .confirmEmail {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.createAccount .borderBox .confirmEmail a {
+  display: flex;
+  justify-content: end;
+  text-decoration: none;
+  color: #000;
+}
+
+.createAccount .reCaptcha {
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding: 40px 60px 20px 60px;
+}
+
+.createAccount .reCaptcha p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.createAccount .submitBtnEmail {
+  background: #000;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  padding: 10px 40px;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.createAccount .updateInfo {
+  background: #000;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  padding: 10px 10px;
+  font-size: 16px;
+  margin: 40px auto 20px;
+}
+
+/*==============PAYMENT====================*/
+
+.paymentFormContainer {
+  background: linear-gradient(
+    180deg,
+    #ffffff 20%,
+    #f4c3c9 20%,
+    40%,
+    #0241ce 40%,
+    60%,
+    #3bffab 60%,
+    80%,
+    #ff5a2a 80%
+  );
+}
+
+.paymentForm {
+  padding: 20px 40px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.paymentFormContainer .invisibleDiv {
+  width: 180px;
+  opacity: 0;
+}
+
+.paymentFormContainer .paymentForm h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.paymentFormContainer .paymentForm p {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.paymentFormContainer .paymentForm small {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  font-size: 11px;
+  text-align: center;
+  color: #737373;
+}
+
+.paymentFormContainer .logo img {
+  width: 15%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.paymentFormContainer .submitBtn {
+  background: #000;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  padding: 10px;
+  font-size: 16px;
+  margin: 20px auto;
+}
+
+.formPayment {
+  display: flex;
+  flex-direction: column;
+}
+
+.formPayment hr {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #dedede;
+}
+
+.paymentContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.paymentContainer .paymentContainerDiv {
+  display: flex;
+  
+}
+
+.paymentContainer .formPaymentDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px;
+}
+
+.paymentContainer .formPaymentTop,
+.formPaymentMid,
+.formPaymentBot,
+.formPaymentPassword {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.paymentContainer .formPaymentTop input,
+.formPaymentMid input,
+.formPaymentBot input,
+.formPaymentPassword input {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 6px;
+  width: 300px;
+  font-size: 12px;
+}
+
+.paymentContainer .formPaymentTop label,
+.formPaymentMid label,
+.formPaymentBot label,
+.formPaymentPassword label {
+  font-size: 10px;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
