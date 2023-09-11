@@ -16,7 +16,7 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!--Css do projeto-->
-    <link rel="stylesheet" href="/public/css/dashboardUser.css">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
 </head>
 
 <body>
@@ -35,7 +35,8 @@
 
 
             <div class="logOut">
-                <i class="bi bi-power"></i><p>Log out</p>
+                <i class="bi bi-power"></i>
+                <p>Log out</p>
             </div>
         </div>
     </section>
@@ -55,11 +56,10 @@
                 </div>
 
 
-                
+
                 <div class="profile">
-                    <div class="bacBola"><div class="bola"></div></div>
-                    <p>Hi, corno-chan</p>
-                    <img src="/public/image/profile.jpg" alt="#">
+                    <p>Hi, Luis <br> CEO</p>
+                    <div class="bola"></div>
                 </div>
             </div>
         </div>
@@ -89,6 +89,11 @@
         <div class="lastestPayments">
             <div class="invList">
                 lista de invoices com filtro de dias
+
+                <div id="data-list">
+
+                </div>
+
             </div>
 
 
@@ -105,6 +110,44 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Função para buscar e exibir os dados do MongoDB
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/inv'); // Rota que você deve criar no servidor
+                const data = await response.json();
+                const dataList = document.getElementById('data-list');
+
+                // Limpa o conteúdo existente
+                dataList.innerHTML = '';
+
+                data.forEach(item => {
+                    const listItem = document.createElement('div');
+                    listItem.classList.add('data-item'); // Adicione uma classe CSS para estilização, se desejar
+
+                    const nameElement = document.createElement('p');
+                    nameElement.textContent = `Name: ${item.firstname}`;
+
+                    const emailElement = document.createElement('p');
+                    emailElement.textContent = `Email: ${item.email}`;
+
+                    // Adicione os elementos de nome e email ao item da lista
+                    listItem.appendChild(nameElement);
+                    listItem.appendChild(emailElement);
+
+                    // Adicione o item à lista
+                    dataList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Erro ao buscar dados:', error);
+            }
+        }
+
+        // Chama a função para buscar os dados quando a página carrega
+        window.addEventListener('load', fetchData);
+
+    </script>
 
     <script src="/app.js"></script>
     <script src="/dolar.js"></script>

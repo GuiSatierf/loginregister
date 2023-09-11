@@ -14,6 +14,12 @@ body {
   height: 100vh;
 }
 
+.div {
+  border: none;
+  padding: 60px;
+  margin: 10px;
+}
+
 .sidebar {
   background: #fff;
   width: 20vw;
@@ -81,8 +87,9 @@ body {
 .mainContent .navbar .top .searchBar input {
   background: none;
   border: none;
+  outline: 0;
   padding: 10px;
-  width: 85%;
+  width: 100%;
 }
 
 .mainContent .navbar .top .searchBar button {
@@ -95,28 +102,16 @@ body {
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: end;
   width: 20%;
 }
 
-.mainContent .navbar .top .profile .bacBola {
-  background-color: #fff;
+.mainContent .navbar .top .profile .bola {
+  background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  margin: 0 10px;
-}
-
-.mainContent .navbar .top .profile .bacBola .bola {
-  background-color: green;
-  border-radius: 50%;
-  height: 20px;
+  height: 40px;
+  width: 40px;
   margin: 10px;
-  width: 20px;
-}
-
-.mainContent .navbar .top .profile img {
-  border-radius: 50%;
-  margin: 0 10px;
-  width: 60%;
 }
 
 .mainContent .staffInv {
@@ -146,6 +141,7 @@ body {
 
 .mainContent .lastestPayments {
   display: flex;
+  color: #000;
   flex-direction: row;
   justify-content: center;
   height: 60vh;
@@ -169,15 +165,14 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
 }
 
 .mainContent .wrapper .wrapperOne {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
     height: 100vh;
+    width: 50%;
 }
 
 .mainContent .wrapper .wrapperOne .invCountdownAdmin {
@@ -199,8 +194,9 @@ body {
 .mainContent .wrapper .wrapperTwo {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    align-items: center;
     height: 100vh;
+    width: 50%;
 }
 
 .mainContent .wrapper .wrapperTwo .totalPayments {
@@ -209,7 +205,6 @@ body {
     border-radius: 30px;
     height: 20vh;
     width: 100%;
-    
 }
 
 .mainContent .wrapper .wrapperTwo .nameless {
@@ -222,6 +217,7 @@ body {
     background: #fff;
     border-radius: 30px;
     height: 60vh;
+    padding: 60px;
     width: 50%;
 }
 
@@ -229,6 +225,11 @@ body {
     background: #fff;
     border-radius: 30px;
     height: 60vh;
+    padding: 60px;
     width: 50%;
 }
 
+#data-item {
+  width: 100%;
+  padding: 30px;
+}

@@ -3,18 +3,20 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const path = require('path');
+const path = require("path");
 const app = express();
 app.use(express.static("public"));
+
+// Importe o módulo 'fs' para manipulação de arquivos (exemplo de ação)
+const fs = require("fs");
 
 // Importação de modelos e classes
 const User = require("./models/User");
 const Register = require("./register");
 const register = new Register();
 app.use("/auth", register.router);
-app.use('/public', express.static('public'))
-app.use('/public', express.static('views'))
-
+app.use("/public", express.static("public"));
+app.use("/public", express.static("views"));
 
 // Configuração do servidor e banco de dados
 const dbUser = process.env.DB_USER;
@@ -46,28 +48,36 @@ function checkToken(req, res, next) {
   }
 }
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({extended: true})); 
+app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: true }));
 
 // Rotas públicas
 app.get("/register", (req, res) => {
-  res.sendFile(__dirname + "/views/auth/register.html");
+  res.sendFile(__dirname + "/views/register.html");
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/views/auth/login.html");
+  res.sendFile(__dirname + "/views/login.html");
 });
 
 app.get("/payment", (req, res) => {
-  res.sendFile(__dirname + "/views/auth/payment.html");
+  res.sendFile(__dirname + "/views/payment.html");
 });
 
-app.get("/thank-you", (req, res) => {
-  res.sendFile(__dirname + "/views/auth/thank.html");
+app.get("/thankyou", (req, res) => {
+  res.sendFile(__dirname + "/views/thank.html");
+});
+
+app.get("/user", (req, res) => {
+  res.sendFile(__dirname + "/views/dashboardUser.html");
+});
+
+app.get("/admin", (req, res) => {
+  res.sendFile(__dirname + "/views/dashboardAdmin.html");
 });
 
 // Autenticação de usuário
-app.post("/views/auth/login", async (req, res) => {
+app.post("/auth/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -87,16 +97,23 @@ app.post("/views/auth/login", async (req, res) => {
       return res.status(404).json({ msg: "Usuário não encontrado!" });
     }
 
+    // Verificar a senha sem o uso do bcrypt (não recomendado)
     if (password !== user.password) {
       return res.status(422).json({ msg: "Senha inválida" });
+    }
+
+    if (email === "a@a") {
+      res.redirect("/admin");
+    }
+
+    if (password === user.password) {
+      // Redirecionar o usuário após o login
+      res.redirect("/user");
     }
 
     // Gerar um token de autenticação
     const secret = process.env.SECRET;
     const token = jwt.sign({ id: user._id }, secret);
-
-    // Responder com sucesso e enviar o token
-    res.redirect("");
   } catch (error) {
     console.error(error);
     res
@@ -117,4 +134,21 @@ app.get("/user/:id", checkToken, async (req, res) => {
   }
 
   res.status(200).json({ user });
+});
+
+const personSchema = new mongoose.Schema({
+  firstname: String,
+  email: String,
+});
+
+const Person = mongoose.model("Person", personSchema);
+
+// Rota para buscar os dados e enviá-los como JSON
+app.get("/api/inv", async (req, res) => {
+  try {
+    const data = await Person.find({});
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar dados" });
+  }
 });
