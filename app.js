@@ -51,23 +51,23 @@ app.use(express.urlencoded({extended: true}));
 
 // Rotas públicas
 app.get("/register", (req, res) => {
-  res.sendFile(__dirname + "/views/register.html");
+  res.sendFile(__dirname + "/views/auth/register.html");
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/views/login.html");
+  res.sendFile(__dirname + "/views/auth/login.html");
 });
 
 app.get("/payment", (req, res) => {
-  res.sendFile(__dirname + "/views/payment.html");
+  res.sendFile(__dirname + "/views/auth/payment.html");
 });
 
 app.get("/thank-you", (req, res) => {
-  res.sendFile(__dirname + "/views/thank.html");
+  res.sendFile(__dirname + "/views/auth/thank.html");
 });
 
 // Autenticação de usuário
-app.post("/auth/login", async (req, res) => {
+app.post("/views/auth/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 

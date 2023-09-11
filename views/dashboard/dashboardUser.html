@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floruit</title>
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/public/image/logo_azul.ico">
+    <!--Fonte Roboto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!--Css do projeto-->
+    <link rel="stylesheet" href="/public/css/dashboardUser.css">
+</head>
+
+<body>
+    <section class="sidebar">
+        <div class="sidebarOne">
+            <h1>Floruit</h1>
+        </div>
+
+
+
+        <div class="sidebarTwo">
+            <div class="">
+                div ads
+            </div>
+
+
+
+            <div class="logOut">
+                <i class="bi bi-power"></i><p>Log out</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mainContent">
+        <div class="navbar">
+            <div class="title">
+                <h1>Staff Invoices</h1>
+            </div>
+
+
+
+            <div class="top">
+                <div class="searchBar">
+                    <input type="text" id="text-to-search" placeholder="Search information...">
+                    <button onclick="search()"><i class="bi bi-search"></i></button>
+                </div>
+
+
+                
+                <div class="profile">
+                    <div class="bacBola"><div class="bola"></div></div>
+                    <p>Hi, corno-chan</p>
+                    <img src="/public/image/profile.jpg" alt="#">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="staffInv">
+            <div class="invCountdown">
+                contagem regressiva do invoice
+            </div>
+
+
+
+            <div class="paidVal">
+                valor a ser enviado
+            </div>
+
+
+
+            <div class="invAmout">
+                quantidade de valor dos invoices
+            </div>
+        </div>
+
+
+
+        <div class="lastestPayments">
+            <div class="invList">
+                lista de invoices com filtro de dias
+            </div>
+
+
+
+            <div class="dolExchange">
+                <h2 id="title"></h2>
+                <p id="date">
+                    Data: <span id="thisdate"></span>
+                </p>
+                <p id="value">
+                    Valor Máximo: <span id="maxvalue"></span><br>
+                    Valor Mínimo: <span id="minvalue"></span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="/app.js"></script>
+    <script src="/dolar.js"></script>
+</body>
+
+</html>

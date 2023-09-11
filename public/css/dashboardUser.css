@@ -1,0 +1,234 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  background: #fff;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .sidebarTwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.sidebar .sidebarTwo .logOut {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sidebar .sidebarTwo .logOut i {
+  margin: 0 5px;
+}
+
+.sidebar .sidebarTwo .ads {
+    background: #fff;
+    border-radius: 30px;
+}
+
+.mainContent {
+  background: #d5d5d5;
+  width: 80vw;
+}
+
+.mainContent .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20vh;
+  width: 100%;
+}
+
+.mainContent .navbar .title {
+  width: 50%;
+}
+
+.mainContent .navbar .top {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.mainContent .navbar .top .searchBar {
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.mainContent .navbar .top .searchBar input {
+  background: none;
+  border: none;
+  padding: 10px;
+  width: 85%;
+}
+
+.mainContent .navbar .top .searchBar button {
+  background: none;
+  border: none;
+  margin: 0 5px;
+}
+
+.mainContent .navbar .top .profile {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.mainContent .navbar .top .profile .bacBola {
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.mainContent .navbar .top .profile .bacBola .bola {
+  background-color: green;
+  border-radius: 50%;
+  height: 20px;
+  margin: 10px;
+  width: 20px;
+}
+
+.mainContent .navbar .top .profile img {
+  border-radius: 50%;
+  margin: 0 10px;
+  width: 60%;
+}
+
+.mainContent .staffInv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20vh;
+}
+
+.mainContent .staffInv .invCountdown {
+  background: #fff;
+  border-radius: 30px;
+  width: 60%;
+}
+
+.mainContent .staffInv .paidVal {
+  background: #fff;
+  border-radius: 30px;
+  width: 20%;
+}
+
+.mainContent .staffInv .invAmout {
+  background: #fff;
+  border-radius: 30px;
+  width: 20%;
+}
+
+.mainContent .lastestPayments {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 60vh;
+}
+
+.mainContent .lastestPayments .invList {
+  background: #fff;
+  border-radius: 30px;
+  width: 80%;
+}
+
+.mainContent .lastestPayments .dolExchange {
+  background: #fff;
+  border-radius: 30px;
+  width: 20%;
+}
+
+/*Admin*/
+
+.mainContent .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.mainContent .wrapper .wrapperOne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+}
+
+.mainContent .wrapper .wrapperOne .invCountdownAdmin {
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    height: 20vh;
+    width: 100%;
+}
+
+.mainContent .wrapper .wrapperOne .employeePayment {
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    height: 60vh;
+    width: 100%;
+}
+
+.mainContent .wrapper .wrapperTwo {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100vh;
+}
+
+.mainContent .wrapper .wrapperTwo .totalPayments {
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    height: 20vh;
+    width: 100%;
+    
+}
+
+.mainContent .wrapper .wrapperTwo .nameless {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mainContent .wrapper .wrapperTwo .nameless .userOnline {
+    background: #fff;
+    border-radius: 30px;
+    height: 60vh;
+    width: 50%;
+}
+
+.mainContent .wrapper .wrapperTwo .nameless .dolExchange {
+    background: #fff;
+    border-radius: 30px;
+    height: 60vh;
+    width: 50%;
+}
+
